@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acesso | InvSmart UNAMA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="bg-slate-100 min-h-screen flex items-center justify-center p-4">
+
+    <div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md">
+        <div class="text-center mb-8">
+            <h1 class="text-2xl font-bold text-slate-800">📦 InvSmart</h1>
+            <p id="auth-title" class="text-slate-500">Faça login para gerenciar seu estoque</p>
+        </div>
+
+        <div class="space-y-4">
+            <div>
+                <label class="block text-sm font-medium text-slate-600">E-mail</label>
+                <input type="email" id="email" class="w-full mt-1 p-3 border rounded-lg outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-slate-600">Senha</label>
+                <input type="password" id="password" class="w-full mt-1 p-3 border rounded-lg outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+
+            <button id="btn-primary" onclick="handleAuth()" class="w-full bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700 transition">
+                Entrar
+            </button>
+
+            <div class="text-center mt-6">
+                <button id="btn-switch" onclick="toggleAuthMode()" class="text-sm text-blue-600 hover:underline">
+                    Não tem conta? Cadastre-se agora
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Use as mesmas chaves do seu app.js
+        const SUPABASE_URL = 'https://qqdcqkgaumdupopunfic.supabase.co';
+        const SUPABASE_KEY = 'sb_publishable_D8NXX7IvL17eUxuPTsXVHg_wc5KOlRM';
+        const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        let isLoginMode = true;
+
+        function toggleAuthMode() {
+            isLoginMode = !isLoginMode;
+            document.getElementById('auth-title').innerText = isLoginMode ? 'Faça login para gerenciar seu estoque' : 'Crie sua conta gratuita';
+            document.getElementById('btn-primary').innerText = isLoginMode ? 'Entrar' : 'Criar Conta';
+            document.getElementById('btn-switch').innerText = isLoginMode ? 'Não tem conta? Cadastre-se agora' : 'Já tem conta? Faça login';
+        }
+
+        async function handleAuth() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (isLoginMode) {
+                const { error } = await _supabase.auth.signInWithPassword({ email, password });
+                if (error) alert(error.message);
+                else window.location.href = 'dashboard.html'; // Redireciona para a dashboard
+            } else {
+                const { error } = await _supabase.auth.signUp({ email, password });
+                if (error) alert(error.message);
+                else {
+                    alert('Cadastro realizado! Agora faça login.');
+                    toggleAuthMode();
+                }
+            }
+        }
+    </script>
+</body>
+</html>
