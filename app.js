@@ -11,7 +11,7 @@ async function cadastrarProduto() {
 
     if(!nome || !sku) return alert("Nome e SKU são obrigatórios!");
 
-    const { error } = await _supabase.from('products').insert([{ nome, sku, preco, estoque_minimo, estoque_atual: 0,user_id: user.id }]);
+    const { error } = await _supabase.from('products').insert([{ nome, sku, preco, estoque_minimo, estoque_atual: 0, user_id: user.id }]);
 
     if (error) alert(error.message);
     else {
@@ -124,4 +124,5 @@ async function verificarSessaoAtiva() {
 }
 
 verificarSessaoAtiva();
+
 
