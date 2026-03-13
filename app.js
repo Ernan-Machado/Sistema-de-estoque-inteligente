@@ -111,4 +111,16 @@ async function logout() {
     window.location.href = 'index.html';
 }
 
+
 verificarSessao();
+// Verifica a sessão assim que a página abre
+async function verificarSessaoAtiva() {
+    const { data: { session } } = await supabase.auth.getSession();
+
+    if (session) {
+        // Se o Supabase achar um login salvo, ele redireciona sozinho
+        window.location.href = 'dashboard.html';
+    }
+}
+
+verificarSessaoAtiva();
