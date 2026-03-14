@@ -66,15 +66,12 @@ lista.innerHTML += `
             <div class="font-bold text-slate-700 text-sm">${item.nome}</div>
             <div class="text-[10px] text-slate-400 uppercase tracking-widest">${item.sku}</div>
         </td>
-        
         <td class="p-4 pr-2 text-center font-mono font-bold text-slate-600">${estoqueAtual}</td>
-        
-        <td class="p-4 pl-0 text-left">
-            <span class="px-2 py-0.5 text-[12px] font-bold rounded-full ${statusCritico ? 'bg-red-100 text-red-600' : 'bg-emerald-100 text-emerald-600'}">
-                ${statusCritico ? 'REPOR' : 'OK'}
-            </span>
-        </td>
-
+        <td class="p-4 align-middle text-left" style="padding-left: 25px !important; text-align: left;">
+    <span class="px-2 py-0.5 text-[9px] font-bold rounded-full ${statusCritico ? 'bg-red-100 text-red-600' : 'bg-emerald-100 text-emerald-600'}">
+        ${statusCritico ? 'REPOR' : 'OK'}
+    </span>
+</td>
         <td class="p-4">
             <div class="flex items-center justify-end gap-2">
                 <input type="number" id="mov-${item.id}" value="1" class="w-10 p-1 border rounded text-xs text-center">
