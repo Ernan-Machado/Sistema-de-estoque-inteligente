@@ -68,11 +68,13 @@ async function carregarEstoque() {
             <div class="text-[10px] text-slate-400 uppercase tracking-widest">${item.sku}</div>
         </td>
         <td class="p-3 text-center font-mono font-bold text-slate-600">${estoqueAtual}</td>
-        <td class="p-3 text-center">
-            <span class="px-2 py-0.5 text-[9px] font-bold rounded-full ${statusCritico ? 'bg-red-100 text-red-600' : 'bg-emerald-100 text-emerald-600'}">
-                ${statusCritico ? 'REPOR' : 'OK'}
-            </span>
-        </td>
+        <td class="p-3 text-left align-middle">
+                <div class="flex justify-start items-center h-full">
+                    <span class="inline-block px-2 py-0.5 text-[9px] font-black rounded-full leading-tight ${statusCritico ? 'bg-red-100 text-red-600' : 'bg-emerald-100 text-emerald-600'}">
+                        ${statusCritico ? 'REPOR' : 'OK'}
+                    </span>
+                </div>
+            </td>
         <td class="p-3">
             <div class="flex items-center justify-end gap-1 md:gap-2">
                 <input type="number" id="mov-${item.id}" value="1" class="w-8 md:w-10 p-1 border rounded text-xs text-center bg-white">
