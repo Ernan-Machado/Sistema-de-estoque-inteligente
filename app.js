@@ -67,12 +67,10 @@ lista.innerHTML += `
             <div class="text-[10px] text-slate-400 uppercase tracking-widest">${item.sku}</div>
         </td>
         <td class="p-4 pr-2 text-center font-mono font-bold text-slate-600">${estoqueAtual}</td>
-      <td class="p-4 align-middle">
-    <div style="display: flex; justify-content: flex-start;">
-        <span style="transform: translateX(15px);" class="px-2 py-0.5 text-[9px] font-bold rounded-full ${statusCritico ? 'bg-red-100 text-red-600' : 'bg-emerald-100 text-emerald-600'}">
-            ${statusCritico ? 'REPOR' : 'OK'}
-        </span>
-    </div>
+      <td class="p-4" style="text-align: left; padding-left: 30px;">
+    <span class="px-2 py-0.5 text-[9px] font-bold rounded-full ${statusCritico ? 'bg-red-100 text-red-600' : 'bg-emerald-100 text-emerald-600'}">
+        ${statusCritico ? 'REPOR' : 'OK'}
+    </span>
 </td>
 <tr>
         <td class="p-4">
