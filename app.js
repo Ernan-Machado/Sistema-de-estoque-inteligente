@@ -62,28 +62,37 @@ async function carregarEstoque() {
         if (statusCritico) produtosBaixos++;
 
         lista.innerHTML += `
-            <tr class="hover:bg-slate-50 transition">
-                <td class="p-4">
-                    <div class="font-bold text-slate-700 text-sm">${item.nome}</div>
-                    <div class="text-[10px] text-slate-400 uppercase tracking-widest">${item.sku}</div>
-                </td>
-                <td class="p-4 text-center font-mono font-bold text-slate-600">${estoqueAtual}</td>
-                <td class="p-4">
-                    <span class="px-2 py-0.5 text-[9px] font-bold rounded-full ${statusCritico ? 'bg-red-100 text-red-600' : 'bg-emerald-100 text-emerald-600'}">
-                        ${statusCritico ? 'REPOR' : 'OK'}
-                    </span>
-                </td>
-                <td class="p-4 text-right">
-                    <div class="flex items-center justify-end gap-2">
-                        <input type="number" id="mov-${item.id}" value="1" class="w-10 p-1 border rounded text-xs text-center">
-                        <button onclick="alterarQtd(${item.id}, ${estoqueAtual}, 'in')" class="bg-slate-100 p-1 rounded text-emerald-600 font-bold">+</button>
-                        <button onclick="alterarQtd(${item.id}, ${estoqueAtual}, 'out')" class="bg-slate-100 p-1 rounded text-red-600 font-bold">-</button>
-                        <button onclick="excluirProduto(${item.id}, '${item.nome}')" class="ml-2 text-slate-300 hover:text-red-500">
-                             Excluir
-                        </button>
-                    </div>
-                </td>
-            </tr>`;
+    <tr class="hover:bg-slate-50 transition border-b border-slate-100">
+        <td class="p-3">
+            <div class="font-bold text-slate-700 text-sm truncate max-w-[120px]">${item.nome}</div>
+            <div class="text-[10px] text-slate-400 uppercase tracking-widest">${item.sku}</div>
+        </td>
+        <td class="p-3 text-center font-mono font-bold text-slate-600">${estoqueAtual}</td>
+        <td class="p-3 text-center">
+            <span class="px-2 py-0.5 text-[9px] font-bold rounded-full ${statusCritico ? 'bg-red-100 text-red-600' : 'bg-emerald-100 text-emerald-600'}">
+                ${statusCritico ? 'REPOR' : 'OK'}
+            </span>
+        </td>
+        <td class="p-3">
+            <div class="flex items-center justify-end gap-1 md:gap-2">
+                <input type="number" id="mov-${item.id}" value="1" class="w-8 md:w-10 p-1 border rounded text-xs text-center bg-white">
+                
+                <button onclick="alterarQtd(${item.id}, ${estoqueAtual}, 'in')" class="bg-emerald-50 hover:bg-emerald-100 p-1.5 rounded text-emerald-600 transition">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+                </button>
+                
+                <button onclick="alterarQtd(${item.id}, ${estoqueAtual}, 'out')" class="bg-red-50 hover:bg-red-100 p-1.5 rounded text-red-600 transition">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M20 12H4"/></svg>
+                </button>
+
+                <button onclick="excluirProduto(${item.id}, '${item.nome}')" class="ml-1 p-1.5 text-slate-300 hover:text-red-600 transition">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                    </svg>
+                </button>
+            </div>
+        </td>
+    </tr>`;
     });
 
     document.getElementById('card-total-itens').innerText = totalItens;
