@@ -68,8 +68,8 @@ async function carregarEstoque() {
             <div class="text-[10px] text-slate-400 uppercase tracking-widest">${item.sku}</div>
         </td>
         <td class="p-3 text-center font-mono font-bold text-slate-600">${estoqueAtual}</td>
-        <td class="p-3 text-left align-middle">
-                <div class="flex justify-start items-center h-full">
+        <td class="p-3 align-middle" style="padding-left: 0; width: 1%;">
+                <div class="flex justify-start">
                     <span class="inline-block px-2 py-0.5 text-[9px] font-black rounded-full leading-tight ${statusCritico ? 'bg-red-100 text-red-600' : 'bg-emerald-100 text-emerald-600'}">
                         ${statusCritico ? 'REPOR' : 'OK'}
                     </span>
