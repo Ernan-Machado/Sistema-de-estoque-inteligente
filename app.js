@@ -66,7 +66,7 @@ async function carregarEstoque() {
                             </button>
                         </div>
                     </td>
-                </tr>`;
+                </tr>`
         });
 
         document.getElementById('card-total-itens').innerText = totalItens;
