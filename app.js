@@ -56,8 +56,8 @@ async function carregarEstoque() {
                         </span>
                     </td>
 
-                    <td class="p-4 text-left" style="width: 1%; padding-left: 20px;">
-                            <div class="flex items-center justify-start gap-2">
+                    <td class="p-4 text-rigth">
+                            <div class="flex items-center justify-end gap-2">
                             <input type="number" id="mov-${item.id}" value="1" class="w-10 p-1 border rounded text-xs text-center">
                             <button onclick="alterarQtd(${item.id}, ${estoqueAtual}, 'in')" class="p-1 text-emerald-600 font-bold">+</button>
                             <button onclick="alterarQtd(${item.id}, ${estoqueAtual}, 'out')" class="p-1 text-red-600 font-bold">-</button>
