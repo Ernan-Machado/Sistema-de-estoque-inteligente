@@ -50,7 +50,7 @@ async function carregarEstoque() {
                     </td>
                     <td class="p-4 text-center font-mono font-bold text-slate-600">${estoqueAtual}</td>
                     
-                    <td class="p-4" style="text-align: left; padding-left: 35px;">
+                    <td class="p-4" style="text-align: left; padding-left: 23.5px;">
                         <span class="px-2 py-0.5 text-[9px] font-bold rounded-full ${statusCritico ? 'bg-red-100 text-red-600' : 'bg-emerald-100 text-emerald-600'}">
                             ${statusCritico ? 'REPOR' : 'OK'}
                         </span>
